@@ -24,23 +24,25 @@ $(document).ready(function(){
 		else {
 			$('#mw-mf-userinfo .post-content').append('<div class="mobileUndo-ui" style="display:inline-block; float:left;"></div>');
 		}
-		$('.mobileUndo-ui').append($('.mw-mf-action-button').remove().css({
+		var $thanks = $('.mw-mf-action-button').remove();
+		$thanks.insertAfter('.mw-mf-edit-count');
+		$thanks.css({
 			'clear': 'none',
 			'margin-top': '0.25em'
-		}));
+		})
 		if (!$('.warningbox').length && mw.config.get('wgRelevantPageIsProbablyEditable')) {
 			//The real music, the undo button is created
 			if (mw.config.get('wgVisualEditor').pageLanguageDir === 'ltr') {
 				$('.mobileUndo-ui').append('<button class=\'mw-ui-button mw-ui-destructive\'' +
 					' id=\'mobileUndo\' style=\"margin-right:0.5em; margin-top:0.25em;\">' +
 					'<img style="height:1.2em;" src=\"//upload.wikimedia.org/wikipedia/commons/b/ba/OOjs_UI_icon_editUndo-ltr-invert.svg\">' +
-					'</img><span id="mobileUndo-text">Undo</span></button>');
+					'</img> <span id="mobileUndo-text">Undo</span></button>');
 			}
 			else {
 				$('.mobileUndo-ui').append('<button class=\'mw-ui-button mw-ui-destructive\'' +
 					' id=\'mobileUndo\' style=\"margin-left:0.5em; margin-top:0.25em;\">' +
 					'<img style="height:1.2em;" src=\"//upload.wikimedia.org/wikipedia/commons/b/ba/OOjs_UI_icon_editUndo-ltr-invert.svg\">' +
-					'</img><span id="mobileUndo-text">Undo</span></button>');
+					'</img> <span id="mobileUndo-text">Undo</span></button>');
 			}
 			console.timeEnd('mobileUndo');
 		}
